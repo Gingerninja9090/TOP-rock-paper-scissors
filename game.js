@@ -43,3 +43,40 @@ console.log(computerScore)
  // Function to activate human and computer choice
  // Compare outputs and declare a winner
  // increase winner score
+
+ function playRound(humanChoice, computerChoice) {
+    if (humanChoice === computerChoice) {
+        return prompt("Its a tie!!")
+    }
+    else if (
+        (humanChoice === "rock" && computerChoice === "scissors") ||
+        (humanChoice === "paper" && computerChoice === "rock") ||
+        (humanChoice === "scissors" && computerChoice === "paper")
+    ) {
+        return humanScore ++,
+        console.log("Human Wins Round!")
+    }
+    else if (
+        (computerChoice === "rock" && humanChoice === "scissors") ||
+        (computerChoice === "paper" && humanChoice === "rock") ||
+        (computerChoice === "scissors" && humanChoice === "paper")
+    ) { return computerScore ++,
+        console.log("Computer Wins Round!")
+    }
+ }
+
+ // Play game of rock, paper & scissors
+  // Function needed to call playround
+  // Track score for 5 rounds and declare a winner
+
+function playGame() {
+    for (let i = 0; i <= 5; i++) {
+        const humanSelection = getHumanChoice;
+        const computerSelection = getComputerChoice;
+        playRound(humanSelection, computerSelection);
+    }
+    let finalScore;
+    if (humanScore > computerScore) {
+        
+    }
+}
