@@ -5,18 +5,23 @@
   // If less than or equal to 66 and greater than 33 then paper
   // If less than or equal to 33 then rock
 
-let randomNumber = Math.floor(Math.random() * 100)
-
 function getComputerChoice() {
+    let randomNumber = Math.floor(Math.random() * 100)
+    let answer = ""
+
+    console.log(randomNumber)
+
     if (randomNumber <= 99 && randomNumber > 66) {
-        return getComputerChoice = 'scissors'
+        return answer = 'scissors'
     }
     else if (randomNumber <= 66 && randomNumber > 33) {
-        return getComputerChoice = 'paper'
+        return answer = 'paper'
     }
     else if (randomNumber <= 33){
-        return getComputerChoice = 'rock'
+        return answer = 'rock'
     } 
+
+    return answer
 }
 
 // Get human choice
@@ -56,11 +61,10 @@ function playRound(humanChoice, computerChoice) {
         computerScore ++,
         alert('Computer Wins Round!')
     }
-}
 
-const humanSelection = getHumanChoice()
-const computerSelection = getComputerChoice()
-playRound(humanSelection, computerSelection)
+    console.log('Player Score: ' + humanScore)
+    console.log('Computer Score: ' + computerScore)
+}
 
  // Play game of rock, paper & scissors
   // Function to call play round funtion 5 times and keep score
@@ -71,3 +75,23 @@ playRound(humanSelection, computerSelection)
     // If player score greater computer score return alert player wins
     // If player score less computer score return alert computer wins
 
+function playGame() {
+    for (let i = 0; i < 5; i++) {
+        const humanSelection = getHumanChoice()
+        console.log('Player Uses: ' + humanSelection)
+        const computerSelection = getComputerChoice()
+        console.log('Computer Uses: ' + computerSelection)
+        playRound(humanSelection, computerSelection)
+    }
+    if (humanScore === computerScore) {
+        alert('Everyone loses (Its a tie!)')
+    }
+    else if (humanScore > computerScore) {
+        alert('Player Wins Game!')
+    }
+    else {
+        alert('Computer Wins Game!')
+    }
+}
+
+playGame()
