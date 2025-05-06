@@ -1,9 +1,3 @@
-// Get computer choice
- // Randomly generates a number
- // Function for get choice
-  // If less than or equal to 99 and greater than 66 then scissors
-  // If less than or equal to 66 and greater than 33 then paper
-  // If less than or equal to 33 then rock
 
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 100)
@@ -24,28 +18,13 @@ function getComputerChoice() {
     return answer
 }
 
-// Get human choice
- // Function for get choice
-  // prompt with question + text input.lowercase all text
-
-function getHumanChoice() {
-    return prompt('Select rock, paper or scissors to play.').toLowerCase()
-}
-
-// Get scores
- // Set player score = 0
- // Set computers score = 0
-
 let humanScore = 0
 let computerScore = 0
 
-// Play round of game
- // Function to compare player and computer choices
-  // If tie then alert users tied
-  // If player wins increase score and alert player wins
-  // If computer wins increase score and alert computer wins
+function playRound() {
+    let humanChoice = gethumanChoice
+    let computerChoice = getComputerChoice();
 
-function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
         alert('Its a tie!')
     }
@@ -62,36 +41,47 @@ function playRound(humanChoice, computerChoice) {
         alert('Computer Wins Round!')
     }
 
+    console.log('Player Choice: ' + humanChoice)
+    console.log('Computer Choice ' + computerChoice)
     console.log('Player Score: ' + humanScore)
     console.log('Computer Score: ' + computerScore)
 }
 
- // Play game of rock, paper & scissors
-  // Function to call play round funtion 5 times and keep score
-   // Create loop to repeat 5 times
-   // Add activation of function play round
-   // Winner choice
-    // If player score equal computer score return alert its a tie
-    // If player score greater computer score return alert player wins
-    // If player score less computer score return alert computer wins
+const selection = document.querySelector("body");
 
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        const humanSelection = getHumanChoice()
-        console.log('Player Uses: ' + humanSelection)
-        const computerSelection = getComputerChoice()
-        console.log('Computer Uses: ' + computerSelection)
-        playRound(humanSelection, computerSelection)
-    }
-    if (humanScore === computerScore) {
-        alert('Everyone loses (Its a tie!)')
-    }
-    else if (humanScore > computerScore) {
-        alert('Player Wins Game!')
-    }
-    else {
-        alert('Computer Wins Game!')
-    }
-}
+const btnPaper = document.createElement("button");
+btnPaper.textContent = "Paper";
 
-playGame()
+const btnRock = document.createElement("button");
+btnRock.textContent = "Rock";
+
+const btnScissor = document.createElement("button");
+btnScissor.textContent = "Scissor";
+
+selection.appendChild(btnPaper);
+selection.appendChild(btnRock);
+selection.appendChild(btnScissor);
+
+btnPaper.addEventListener('click', () => {
+    return gethumanChoice = "paper",
+    playRound()
+});
+btnRock.addEventListener('click', () => {
+    return gethumanChoice = "rock",
+    playRound()
+});
+btnScissor.addEventListener('click', () => {
+    return gethumanChoice = "scissors",
+    playRound()
+});
+
+const score = document.querySelector("div");
+
+const scoreHuman = document.createElement("p");
+scoreHuman.textContent = ("Human Score: " + humanScore);
+
+const scoreComputer = document.createElement("p");
+scoreComputer.textContent = ("Computer Score: " + computerScore);
+
+score.appendChild(scoreHuman);
+score.appendChild(scoreComputer);
