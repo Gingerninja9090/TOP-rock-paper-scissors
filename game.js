@@ -1,9 +1,9 @@
 
+// Random number generator //
+
 function getComputerChoice() {
     let randomNumber = Math.floor(Math.random() * 100)
     let answer = ""
-
-    console.log(randomNumber)
 
     if (randomNumber <= 99 && randomNumber > 66) {
         return answer = 'scissors'
@@ -18,8 +18,12 @@ function getComputerChoice() {
     return answer
 }
 
+// Set inital scores //
+
 let humanScore = 0
 let computerScore = 0
+
+// Single round play function //
 
 function playRound() {
     let humanChoice = gethumanChoice
@@ -41,11 +45,35 @@ function playRound() {
         alert('Computer Wins Round!')
     }
 
-    console.log('Player Choice: ' + humanChoice)
-    console.log('Computer Choice ' + computerChoice)
-    console.log('Player Score: ' + humanScore)
-    console.log('Computer Score: ' + computerScore)
+    const hscore = document.querySelector("#hscore");
+    hscore.innerHTML = humanScore;
+
+    const cscore = document.querySelector("#cscore");
+    cscore.innerHTML = computerScore;
+
+    if (humanScore === 5) {
+        humanScore = 0
+        computerScore = 0
+        alert ('Player has won the game!!')
+        const hscore = document.querySelector("#hscore");
+        hscore.innerHTML = humanScore;
+    
+        const cscore = document.querySelector("#cscore");
+        cscore.innerHTML = computerScore;
+    }
+    else if (computerScore === 5) {
+        humanScore = 0
+        computerScore = 0
+        alert ('Computer has won the game!!')
+        const hscore = document.querySelector("#hscore");
+        hscore.innerHTML = humanScore;
+    
+        const cscore = document.querySelector("#cscore");
+        cscore.innerHTML = computerScore;
+    }
 }
+
+// DOM UI button attachment //
 
 const selection = document.querySelector("body");
 
@@ -62,6 +90,8 @@ selection.appendChild(btnPaper);
 selection.appendChild(btnRock);
 selection.appendChild(btnScissor);
 
+// Function added to DOM buttons to play round based on users choice //
+
 btnPaper.addEventListener('click', () => {
     return gethumanChoice = "paper",
     playRound()
@@ -74,14 +104,3 @@ btnScissor.addEventListener('click', () => {
     return gethumanChoice = "scissors",
     playRound()
 });
-
-const score = document.querySelector("div");
-
-const scoreHuman = document.createElement("p");
-scoreHuman.textContent = ("Human Score: " + humanScore);
-
-const scoreComputer = document.createElement("p");
-scoreComputer.textContent = ("Computer Score: " + computerScore);
-
-score.appendChild(scoreHuman);
-score.appendChild(scoreComputer);
